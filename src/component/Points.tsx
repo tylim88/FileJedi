@@ -1,5 +1,5 @@
 import { TablerIconsProps } from '@tabler/icons-react'
-import { Text, Title, Grid } from '@mantine/core'
+import { Text, Title, SimpleGrid, Flex } from '@mantine/core'
 import { useIsSmallestBreakpoint } from '@/hooks'
 import { textColor } from '@/styles'
 
@@ -14,17 +14,13 @@ export const Points = ({
 }) => {
 	const span = useIsSmallestBreakpoint() ? 12 : 6
 	return (
-		<Grid py="xl">
+		<SimpleGrid py="xl" cols={{ sm: 1, md: 2 }}>
 			{items.map(({ Icon, text, title }) => {
 				return (
-					<Grid.Col
-						p="xs"
-						display="flex"
-						key={text}
-						span={span}
-						style={{ alignItems: 'start', flexDirection: 'column' }}
-					>
-						<Icon size={24} color={textColor} />
+					<div>
+						<Flex ta="start">
+							<Icon size={24} color={textColor} />
+						</Flex>
 						<Title order={4} ta="start">
 							{title}
 						</Title>
@@ -37,9 +33,9 @@ export const Points = ({
 						>
 							{text}
 						</Text>
-					</Grid.Col>
+					</div>
 				)
 			})}
-		</Grid>
+		</SimpleGrid>
 	)
 }

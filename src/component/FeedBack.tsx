@@ -1,6 +1,5 @@
 import {
 	Modal,
-	Grid,
 	Stack,
 	Flex,
 	Button,
@@ -21,6 +20,7 @@ export const FeedBack = ({
 	close: () => void
 }) => {
 	const [subject, setSubject] = useState('')
+	const [email, setEmail] = useState('')
 	const [message, setMessage] = useState('')
 	const [status, setStatus] = useState<
 		'idle' | 'loading' | 'error' | 'success'
@@ -37,39 +37,46 @@ export const FeedBack = ({
 			size="sm"
 		>
 			<Stack gap="xs">
-				<Grid>
-					<Grid.Col span={12}>
-						<Textarea
-							ta="left"
-							label="Subject"
-							value={subject}
-							onChange={event => setSubject(event.currentTarget.value)}
-							required
-							styles={{
-								input: {
-									maxHeight: '1rem',
-								},
-								label: { fontWeight: 'bold' },
-							}}
-						/>
-					</Grid.Col>
-					<Grid.Col span={12}>
-						<Textarea
-							ta="left"
-							label="Message"
-							value={message}
-							onChange={event => setMessage(event.currentTarget.value)}
-							required
-							styles={{
-								input: {
-									minHeight: '5rem',
-								},
-								label: { fontWeight: 'bold' },
-							}}
-							resize="vertical"
-						/>
-					</Grid.Col>
-				</Grid>
+				<Textarea
+					ta="left"
+					label="Subject"
+					value={subject}
+					onChange={event => setSubject(event.currentTarget.value)}
+					required
+					styles={{
+						input: {
+							maxHeight: '1rem',
+						},
+						label: { fontWeight: 'bold' },
+					}}
+				/>
+				<Textarea
+					ta="left"
+					label="Email"
+					value={email}
+					onChange={event => setEmail(event.currentTarget.value)}
+					placeholder="Fill in the email if you need replies."
+					styles={{
+						input: {
+							maxHeight: '1rem',
+						},
+						label: { fontWeight: 'bold' },
+					}}
+				/>
+				<Textarea
+					ta="left"
+					label="Message"
+					value={message}
+					onChange={event => setMessage(event.currentTarget.value)}
+					required
+					styles={{
+						input: {
+							minHeight: '5rem',
+						},
+						label: { fontWeight: 'bold' },
+					}}
+					resize="vertical"
+				/>
 				{status === 'success' ? (
 					<Flex justify="center" h="1rem">
 						<Text size="md" c="green">
@@ -96,7 +103,9 @@ export const FeedBack = ({
 											feedbackURL,
 											{
 												subject,
-												message,
+												message: `${message}
+												${email}
+												`,
 											},
 											{
 												headers: {
@@ -129,7 +138,7 @@ export const FeedBack = ({
 								Cancel
 							</Button>
 						</Flex>
-						<Divider my="xs" label="or" labelPosition="center" />
+						<Divider my="xs" label="or open an issue" labelPosition="center" />
 						<Flex justify="center">
 							<Button
 								component="a"
