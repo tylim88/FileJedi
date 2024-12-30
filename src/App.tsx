@@ -3,9 +3,6 @@ import { Outlet } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from './component'
 import { Suspense, useEffect } from 'react'
 import { useFFmpegStore } from '@/stores'
-import { isChromium } from '@/utils'
-
-const isChrome = isChromium()
 
 export const App = () => {
 	useEffect(() => {
@@ -13,13 +10,9 @@ export const App = () => {
 	}, [])
 	return (
 		<Container h="100%">
-			{isChrome ? (
-				<Center h="100%" w="100%">
-					Please use Firefox
-				</Center>
-			) : (
-				<Outlet />
-			)}
+			<Center h="100%" w="100%">
+				This website is temporary down, please check back later.
+			</Center>
 			<Suspense fallback={<Loader />}>
 				<TanStackRouterDevtools />
 			</Suspense>
