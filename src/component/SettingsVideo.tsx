@@ -66,7 +66,7 @@ export const SettingsVideo = ({
 					description="Leave it 0 to keep the original video parameter."
 					value={audioBitrate}
 					onChange={v => setAudioBitrate(v || '0')}
-					label="Bitrate (kbps)"
+					label="Audio Bitrate (kbps)"
 					data={audioBitrates}
 					defaultValue={'0'}
 					styles={{

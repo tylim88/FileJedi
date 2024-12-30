@@ -1,6 +1,5 @@
 import { TablerIconsProps } from '@tabler/icons-react'
 import { Text, Title, SimpleGrid, Flex } from '@mantine/core'
-import { useIsSmallestBreakpoint } from '@/hooks'
 import { textColor } from '@/styles'
 
 export const Points = ({
@@ -12,12 +11,11 @@ export const Points = ({
 		title: string
 	}[]
 }) => {
-	const span = useIsSmallestBreakpoint() ? 12 : 6
 	return (
 		<SimpleGrid py="xl" cols={{ sm: 1, md: 2 }}>
 			{items.map(({ Icon, text, title }) => {
 				return (
-					<div>
+					<div key={title}>
 						<Flex ta="start">
 							<Icon size={24} color={textColor} />
 						</Flex>

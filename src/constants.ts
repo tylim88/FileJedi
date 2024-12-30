@@ -7,8 +7,6 @@ import {
 	IconFileDelta,
 	IconSettingsStar,
 } from '@tabler/icons-react'
-import { useFFmpegAudioStore } from '@/stores/ffmpegAudio'
-import { useFFmpegVideoStore } from '@/stores/ffmpegVideo'
 
 export const videoFormats = [
 	{ mime: 'video/mp4', ext: '.mp4' },
@@ -25,8 +23,6 @@ export const videoFormats = [
 	{ mime: 'video/x-ms-vob', ext: '.vob' },
 	{ mime: 'video/mp2t', ext: '.ts' }, // MPEG-2 Transport Stream
 	{ mime: 'video/x-f4v', ext: '.f4v' }, // Adobe Flash MP4
-	{ mime: 'video/x-mpegurl', ext: '.m3u8' }, // HLS Streaming format
-	{ mime: 'video/h264', ext: '.h264' }, // Raw H.264 video format
 	// below extension result in errors
 	// { mime: 'video/3gpp', ext: '.3gp' },
 	// { mime: 'video/3gpp2', ext: '.3g2' },
