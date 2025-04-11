@@ -1,6 +1,5 @@
 import { TablerIconsProps } from '@tabler/icons-react'
 import { Text, Title, SimpleGrid, Flex } from '@mantine/core'
-import { textColor } from '@/styles'
 
 export const Points = ({
 	items,
