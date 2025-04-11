@@ -10,7 +10,6 @@ import {
 import { SettingsVideo } from './SettingsVideo'
 import { SettingsAudio } from './SettingsAudio'
 import { useDisclosure } from '@mantine/hooks'
-import { isChromium } from '@/utils'
 
 export const MainControls = () => {
 	const mode = useFFmpegStore(state => state.mode)
@@ -83,11 +82,6 @@ export const MainControls = () => {
 				onChange={event => setIsAutoDownload(event.currentTarget.checked)}
 				label="Automatically download when conversion is complete."
 			/>
-			{isChromium() ? (
-				<Text size="xs" fs="italic">
-					For faster conversion, please use Firefox
-				</Text>
-			) : null}
 		</>
 	)
 }
