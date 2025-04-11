@@ -3,7 +3,7 @@ import { FFmpeg } from '@ffmpeg/ffmpeg'
 import { toBlobURL } from '@ffmpeg/util'
 
 const initialState = {
-	packageStatus: 'idle',
+	status: 'loading',
 	message: null,
 	mode: 'video',
 } as const
@@ -11,7 +11,7 @@ const initialState = {
 export const ffmpeg = new FFmpeg()
 export const useFFmpegStore = persistent<{
 	load: () => void
-	packageStatus: 'idle' | 'loading' | 'loaded'
+	status: 'error' | 'loading' | 'done'
 	message: null | string
 	mode: 'video' | 'audio'
 	switchMode: (mode: 'video' | 'audio') => void
@@ -24,19 +24,18 @@ export const useFFmpegStore = persistent<{
 		return {
 			...initialState,
 			reset: () => {
-				set({ ...initialState, packageStatus: get().packageStatus })
+				set({ ...initialState, status: get().status })
 			},
 			switchMode: (mode: 'video' | 'audio') => {
 				set({ mode })
 			},
 			load: async () => {
-				const { packageStatus: status } = get()
-				if (status !== 'idle') return
-				set({ packageStatus: 'loading' })
+				const { status } = get()
+				if (status === 'done') return
+				set({ status: 'loading' })
 				const baseURL = 'https://unpkg.com/@ffmpeg/core-mt@0.12.9/dist/esm'
 
 				ffmpeg.on('log', ({ message }) => {
-					console.log({ message })
 					set({ message })
 				})
 				// toBlobURL is used to bypass CORS issue, urls with the same
@@ -56,9 +55,9 @@ export const useFFmpegStore = persistent<{
 							'text/javascript'
 						),
 					})
-					set({ packageStatus: 'loaded' })
+					set({ status: 'done' })
 				} catch (e) {
-					set({ packageStatus: 'idle' })
+					set({ status: 'error' })
 					console.error(e)
 				}
 			},

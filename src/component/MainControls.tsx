@@ -1,5 +1,5 @@
 import { Button, Text, Checkbox, SimpleGrid } from '@mantine/core'
-import { useFFmpegStore, modes, useFFmpegAudioStore } from '@/stores'
+import { useFFmpegStore, modes, useAudioStore } from '@/stores'
 import { useState } from 'react'
 import {
 	IconPlayerPlay,
@@ -13,7 +13,7 @@ import { useDisclosure } from '@mantine/hooks'
 
 export const MainControls = () => {
 	const mode = useFFmpegStore(state => state.mode)
-	const store = modes[mode].store as typeof useFFmpegAudioStore // ? why type mess up here
+	const store = modes[mode].store as typeof useAudioStore // ? why type mess up here
 	const items = store(state => state.items)
 	const selectedUUIDs = store(state => state.selectedUUIDs)
 	const [autoDownload, setIsAutoDownload] = useState(true)

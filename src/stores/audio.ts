@@ -4,7 +4,7 @@ import { FileWithPath } from '@mantine/dropzone'
 import { audioExtensions } from '@/constants'
 import { v4 } from 'uuid'
 import { download } from '@/utils'
-import { useFFmpegStore, ffmpeg } from './ffmpeg'
+import { ffmpeg } from './ffmpeg'
 
 const initialState = {
 	items: [],
@@ -18,7 +18,7 @@ const initialState = {
 	selectedUUIDs: [],
 }
 
-export const useFFmpegAudioStore = persistent<{
+export const useAudioStore = persistent<{
 	selectedUUIDs: string[]
 	downloadSelected: () => void
 	convertSelected: (props: { autoDownload: boolean }) => void
@@ -67,7 +67,7 @@ export const useFFmpegAudioStore = persistent<{
 			reset: () => {
 				set({ ...initialState })
 			},
-			convertSelected: async ({ autoDownload }) => {
+			convertSelected: ({ autoDownload }) => {
 				const {
 					items,
 					settings: { ext, bitrate, channel, sampleRate, volume },
@@ -76,14 +76,6 @@ export const useFFmpegAudioStore = persistent<{
 				clearDownload(selectedUUIDs)
 				set({ items: items.map(item => ({ ...item, status: 'processing' })) })
 
-				while (useFFmpegStore.getState().packageStatus !== 'loaded') {
-					if (useFFmpegStore.getState().packageStatus === 'loaded') break
-					await new Promise(res => {
-						setTimeout(() => {
-							res(null)
-						}, 1000)
-					}).catch(console.error)
-				}
 				items.forEach(async (item, index) => {
 					if (
 						item.status === 'processing' ||

@@ -10,19 +10,16 @@
 		"setup": " npm run un && npm i && npx husky install",
 		"pretty": "prettier --write .",
 		"lint": "eslint . --ext .js,.jsx,.ts,.tsx,.md,.json,.yml --fix",
-		"tcm": "tcm src",
 		"building-block-scripts": "=============building-blocks===================",
 		"use_regular_html": "cp -fr index.regular.html index.html",
 		"build": "vite build --config vite.sw.config.ts && vite build",
 		"dev-scripts": "======================dev(local client side)===========================",
 		"use_dev_config": "cp -fr src/config.dev.ts src/config.ts",
-		"use_dev_manifest": "cp -fr manifest.dev.json manifest.json",
-		"dev": "npm run use_dev_config && npm run tcm && vite --host",
+		"dev": "npm run use_dev_config && vite --host",
 		"preview": "npm run use_dev_config && npm run build && vite preview --host",
 		"prod-scripts": "======================prod===========================",
 		"use_prod_config": "cp -fr src/config.prod.ts src/config.ts",
-		"use_prod_manifest": "cp -fr manifest.prod.json manifest.json",
-		"prod-build": "npm run use_prod_config && npm run tcm && tsc && npm run use_prod_manifest && npm run build"
+		"prod-build": "npm run use_prod_config  && npm run build"
 	},
 	"repository": {
 		"type": "git",

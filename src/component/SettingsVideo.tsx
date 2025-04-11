@@ -11,7 +11,7 @@ import {
 import { videoExtensions, audioBitrates } from '@/constants'
 import { useState } from 'react'
 import { IconCheck, IconX } from '@tabler/icons-react'
-import { useFFmpegVideoStore } from '@/stores'
+import { useVideoStore } from '@/stores'
 
 export const SettingsVideo = ({
 	isOpened,
@@ -105,7 +105,7 @@ export const SettingsVideo = ({
 					leftSection={<IconCheck size={14} />}
 					variant="default"
 					onClick={() => {
-						useFFmpegVideoStore.setState({
+						useVideoStore.setState({
 							settings: {
 								ext,
 								videoBitrate,

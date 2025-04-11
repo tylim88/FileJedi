@@ -9,7 +9,7 @@ import {
 	Grid,
 	Flex,
 } from '@mantine/core'
-import { modes, useFFmpegStore, useFFmpegAudioStore } from '@/stores'
+import { modes, useFFmpegStore, useAudioStore } from '@/stores'
 import byteSize from 'byte-size'
 import { IconTrashX } from '@tabler/icons-react'
 import prettyMilliseconds from 'pretty-ms'
@@ -17,7 +17,7 @@ import { useIsSmallestBreakpoint } from '@/hooks'
 
 export const FileList = () => {
 	const mode = useFFmpegStore(state => state.mode)
-	const store = modes[mode].store as typeof useFFmpegAudioStore // ? shouldn't have to annotate type here, why?
+	const store = modes[mode].store as typeof useAudioStore // ? shouldn't have to annotate type here, why?
 	const items = store(state => state.items)
 	const selectedUUIDs = store(state => state.selectedUUIDs)
 	const isMobile = useIsSmallestBreakpoint()

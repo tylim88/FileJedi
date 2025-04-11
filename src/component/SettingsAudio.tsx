@@ -15,7 +15,7 @@ import {
 } from '@/constants'
 import { useState } from 'react'
 import { IconCheck, IconX } from '@tabler/icons-react'
-import { useFFmpegAudioStore } from '@/stores'
+import { useAudioStore } from '@/stores'
 
 export const SettingsAudio = ({
 	isOpened,
@@ -114,7 +114,7 @@ export const SettingsAudio = ({
 					leftSection={<IconCheck size={14} />}
 					variant="default"
 					onClick={() => {
-						useFFmpegAudioStore.setState({
+						useAudioStore.setState({
 							settings: {
 								ext,
 								bitrate,

@@ -12,7 +12,7 @@ export const Points = ({
 	}[]
 }) => {
 	return (
-		<SimpleGrid py="xl" cols={{ sm: 1, md: 2 }}>
+		<SimpleGrid mt="xl" cols={{ sm: 1, md: 2 }}>
 			{items.map(({ Icon, text, title }) => {
 				return (
 					<div key={title}>

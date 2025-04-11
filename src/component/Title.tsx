@@ -6,7 +6,7 @@ export const Title = () => {
 	const mode = useFFmpegStore(state => state.mode)
 
 	return (
-		<Stack justify="center" align="center" gap="xs" py="xl">
+		<Stack justify="center" align="center" gap="xs" pt="xl">
 			<Title_ order={1}>{modes[mode].title1}</Title_>
 			<Title_ style={{ color: textColor }} order={3}>
 				Absolutely Free And No Artificial Restrictions!
