@@ -103,9 +103,8 @@ export const FeedBack = ({
 											feedbackURL,
 											{
 												subject,
-												message: `${message}
-												${email}
-												`,
+												message,
+												email: email || null,
 											},
 											{
 												headers: {
