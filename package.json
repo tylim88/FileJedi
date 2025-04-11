@@ -12,7 +12,6 @@
 		"lint": "eslint . --ext .js,.jsx,.ts,.tsx,.md,.json,.yml --fix",
 		"tcm": "tcm src",
 		"building-block-scripts": "=============building-blocks===================",
-		"tsc": "tsc",
 		"use_regular_html": "cp -fr index.regular.html index.html",
 		"build": "vite build --config vite.sw.config.ts && vite build",
 		"dev-scripts": "======================dev(local client side)===========================",

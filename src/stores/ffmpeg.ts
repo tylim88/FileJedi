@@ -1,7 +1,6 @@
 import { persistent } from './utils'
 import { FFmpeg } from '@ffmpeg/ffmpeg'
 import { toBlobURL } from '@ffmpeg/util'
-import { isChromium } from '@/utils'
 
 const initialState = {
 	packageStatus: 'idle',
@@ -34,9 +33,8 @@ export const useFFmpegStore = persistent<{
 				const { packageStatus: status } = get()
 				if (status !== 'idle') return
 				set({ packageStatus: 'loading' })
-				const baseURL = isChromium()
-					? 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm'
-					: 'https://unpkg.com/@ffmpeg/core-mt@0.12.6/dist/esm'
+				const baseURL = 'https://unpkg.com/@ffmpeg/core-mt@0.12.6/dist/esm'
+
 				ffmpeg.on('log', ({ message }) => {
 					console.log({ message })
 					set({ message })

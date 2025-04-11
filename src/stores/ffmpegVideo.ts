@@ -74,6 +74,7 @@ export const useFFmpegVideoStore = persistent<{
 					selectedUUIDs,
 				} = get()
 				clearDownload(selectedUUIDs)
+
 				set({ items: items.map(item => ({ ...item, status: 'processing' })) })
 
 				while (useFFmpegStore.getState().packageStatus !== 'loaded') {
