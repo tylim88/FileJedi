@@ -16,13 +16,14 @@ export const Points = ({
 			{items.map(({ Icon, text, title }) => {
 				return (
 					<div key={title}>
-						<Flex ta="start">
-							<Icon size={24} color={textColor} />
+						<Flex ta="start" gap="md" mb="xs">
+							<Icon size={24} color="white" />
+							<Title c="white" order={4} ta="start">
+								{title}
+							</Title>
 						</Flex>
-						<Title order={4} ta="start">
-							{title}
-						</Title>
 						<Text
+							c="black"
 							ta="start"
 							size="sm"
 							style={{
