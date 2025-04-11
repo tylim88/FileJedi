@@ -10,17 +10,6 @@ export const App = () => {
 	}, [])
 	return (
 		<Container h="100%">
-			<Text>
-				This website is temporary down, please come back later or get the code
-				here:
-			</Text>
-			<Anchor
-				c="white"
-				href="https://github.com/tylim88/FileJedi"
-				underline="always"
-			>
-				Github
-			</Anchor>
 			<Outlet />
 			<Suspense fallback={<Loader />}>
 				<TanStackRouterDevtools />
