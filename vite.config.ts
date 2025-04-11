@@ -21,7 +21,7 @@ export default defineConfig({
 		svgr({ include: '**/*.svg' }),
 		mkcert(),
 		vsharp(),
-		removeConsole({ includes: ['log'] }),
+		removeConsole(),
 	],
 	optimizeDeps: {
 		exclude: ['@ffmpeg/ffmpeg', '@ffmpeg/util'],

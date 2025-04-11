@@ -1,12 +1,11 @@
 import {
 	Dropzone,
-	FooterSocial,
+	Header,
 	Title,
 	FileList,
 	MainControls,
 	DropzoneMini,
 	Points,
-	FeedBack,
 } from '@/component'
 import { Stack, Button } from '@mantine/core'
 import {
@@ -16,8 +15,6 @@ import {
 	modes,
 } from '@/stores'
 import { IconCheck } from '@tabler/icons-react'
-import { useDisclosure } from '@mantine/hooks'
-import { IconMail } from '@tabler/icons-react'
 const isMoreThan99 = (count: number) =>
 	count > 0 ? (count > 99 ? `(99+)` : `(${count})`) : ''
 
@@ -31,11 +28,11 @@ export const Home = () => {
 	const isVideo = mode === 'video'
 	const isAudio = mode === 'audio'
 	const hasItems = (isVideo ? videoCount : isAudio ? audioCount : 0) > 0
-	const [isFeedbackOpened, { open: openFeedback, close: closeFeedback }] =
-		useDisclosure(false)
+
 	return (
 		<Stack gap={0} align="center" justify="start" h="100%" px={0}>
-			<FeedBack isOpened={isFeedbackOpened} close={closeFeedback} />
+			<Header />
+
 			<Title />
 			<Stack
 				gap="sm"
@@ -45,14 +42,6 @@ export const Home = () => {
 					flexGrow: 1,
 				}}
 			>
-				<Button
-					w="8rem"
-					leftSection={<IconMail size={14} />}
-					variant="default"
-					onClick={openFeedback}
-				>
-					Feedback
-				</Button>
 				<Button.Group>
 					<Button
 						w="8rem"
@@ -89,7 +78,6 @@ export const Home = () => {
 					</>
 				)}
 			</Stack>
-			<FooterSocial />
 		</Stack>
 	)
 }
