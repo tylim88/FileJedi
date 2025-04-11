@@ -32,7 +32,6 @@ export const Home = () => {
 	return (
 		<Stack gap={0} align="center" justify="start" h="100%" px={0}>
 			<Header />
-
 			<Title />
 			<Stack
 				gap="sm"
