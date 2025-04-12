@@ -32,10 +32,12 @@ Roadmap:
 
 techs:
 
-1. FFmpeg wasm
-2. Typescript
-3. Mantine
-4. Tan Stack Router
-5. Vite
-6. Zustand
-7. Cloudflare
+- Tan Stack Start
+- Mantine
+- Cloudflare
+- TailWind
+- Typescript
+- React Query
+- Ky
+- Dayjs
+- Firebase

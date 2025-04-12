@@ -1,35 +1,24 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-# generated
 node_modules
-dist
-dist-ssr
-*.local
-**/lib
-*.css.d.ts
+package-lock.json
+yarn.lock
 
-# vessel
-manifest.json
-config.ts
-
-
-# Editor directories and files
-!.vscode/extensions.json
-.idea
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+.cache
+.env
+.vercel
+.output
+.vinxi
 
-# env
-**.env
-**.env.**
+/build/
+/dist/
+/api/
+/server/build
+/public/build
+.vinxi
+# Sentry Config File
+.env.sentry-build-plugin
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
