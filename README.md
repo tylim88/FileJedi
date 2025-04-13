@@ -40,4 +40,6 @@ techs:
 - React Query
 - Ky
 - Dayjs
-- Firebase
+- Firebase (mainly for auth)
+- Eslint
+- Prettier

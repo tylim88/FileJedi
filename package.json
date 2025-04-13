@@ -7,7 +7,7 @@
 		"dev": "vinxi dev --host",
 		"build": "vinxi build",
 		"start": "vinxi start",
-		"setup": "husky"
+		"setup": "npm i && husky init"
 	},
 	"dependencies": {
 		"@mantine/core": "^7.17.3",
