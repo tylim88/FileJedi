@@ -41,9 +41,16 @@ export const Header = () => {
 
 	return (
 		<Flex w="100%" justify="space-between" pt="md" align="center">
-			<Text component={Link} href="/" fw={800} title="go to homepage" size="xl">
-				FILE JEDI
-			</Text>
+			<NavLink
+				component={Link}
+				href="/"
+				title="go to homepage"
+				aria-label="go to homepage"
+				styles={{
+					label: { fontSize: DEFAULT_THEME.fontSizes.xl, fontWeight: 800 },
+				}}
+				label="FILE JEDI"
+			/>
 			<Burger
 				opened={opened}
 				onClick={toggle}
@@ -53,13 +60,7 @@ export const Header = () => {
 			/>
 			<Drawer
 				title={
-					<Text
-						component={Link}
-						href="/"
-						fw={800}
-						title="go to homepage"
-						size="xl"
-					>
+					<Text fw={800} title="go to homepage" size="xl">
 						FILE JEDI
 					</Text>
 				}
