@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist, Geist_Mono, Rubik } from 'next/font/google'
 import {
 	MantineProvider,
 	ColorSchemeScript,
@@ -10,15 +10,7 @@ import {
 import { Header } from '@/components'
 import 'tailwind-preset-mantine'
 
-const geistSans = Geist({
-	variable: '--font-geist-sans',
-	subsets: ['latin'],
-})
-
-const geistMono = Geist_Mono({
-	variable: '--font-geist-mono',
-	subsets: ['latin'],
-})
+const font = Rubik({ variable: '--font-rubick', subsets: ['latin'] })
 
 export const metadata: Metadata = {
 	title: 'FileJedi',
@@ -36,13 +28,11 @@ export const metadata: Metadata = {
 	},
 }
 
-export const theme = createTheme({})
+export const theme = createTheme({ fontFamily: font.style.fontFamily })
 
 export default function RootLayout({
 	children,
-}: Readonly<{
-	children: React.ReactNode
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
 	return (
 		<html lang="en" {...mantineHtmlProps}>
 			<head>
@@ -54,9 +44,7 @@ export default function RootLayout({
 					content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
 				/>
 			</head>
-			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-			>
+			<body className="antialiased">
 				<MantineProvider theme={theme}>
 					<Container>
 						<Header />
