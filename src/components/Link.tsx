@@ -9,9 +9,7 @@ export const Link = ({
 	...props
 }: StrictOmit<propsLink, 'href'> &
 	(
-		| {
-				href: '/' | '/audio' | '/motivation'
-		  }
+		| { href: '/' | '/video' | '/audio' | '/motivation' }
 		| { href: `https://${string}`; target?: never }
 	)) => {
 	return (
