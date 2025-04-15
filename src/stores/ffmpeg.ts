@@ -1,8 +1,8 @@
 import { persistent } from './utils'
 import { FFmpeg } from '@ffmpeg/ffmpeg'
 import { toBlobURL } from '@ffmpeg/util'
-import ffmpegWasm from '@ffmpeg/core-mt/wasm?url' // resolves to "/@fs/node_modules/@ffmpeg/core-mt/dist/esm/ffmpeg-core.wasm" in dev
 import ffmpegCore from '@ffmpeg/core-mt?url'
+import { wasmURL } from '@/config'
 
 const initialState = {
 	status: 'loading',
@@ -44,10 +44,7 @@ export const useFFmpegStore = persistent<{
 				try {
 					await ffmpeg.load({
 						coreURL: await toBlobURL(ffmpegCore, 'text/javascript'),
-						wasmURL: await toBlobURL(
-							'https://api.filejedi.com/ffmpeg-core.wasm',
-							'application/wasm'
-						),
+						wasmURL: await toBlobURL(wasmURL, 'application/wasm'),
 						workerURL: await toBlobURL(`/worker.js`, 'text/javascript'),
 					})
 					set({ status: 'done' })
