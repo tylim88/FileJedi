@@ -71,7 +71,6 @@ function handleMessage(e) {
 				Module['__emscripten_thread_exit'](-1)
 			}
 		} else if (e.data.target === 'setimmediate') {
-			//
 		} else if (e.data.cmd === 'checkMailbox') {
 			if (initializedJS) {
 				Module['checkMailbox']()
