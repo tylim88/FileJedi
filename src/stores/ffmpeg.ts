@@ -51,6 +51,7 @@ export const useFFmpegStore = persistent<{
 						),
 						workerURL: await toBlobURL(`/worker.js`, 'text/javascript'),
 					})
+					console.log('done')
 					set({ status: 'done' })
 				} catch (e) {
 					set({ status: 'error' })
