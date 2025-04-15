@@ -2,7 +2,8 @@ import { persistent } from './utils'
 import { FFmpeg } from '@ffmpeg/ffmpeg'
 import { toBlobURL } from '@ffmpeg/util'
 import ffmpegCore from '@ffmpeg/core-mt?url'
-import { wasmURL, workerURL } from '@/config'
+import { wasmURL } from '@/config'
+import workerRaw from '@/worker.js?raw'
 
 const initialState = {
 	status: 'loading',
@@ -45,7 +46,12 @@ export const useFFmpegStore = persistent<{
 					await ffmpeg.load({
 						coreURL: await toBlobURL(ffmpegCore, 'text/javascript'),
 						wasmURL: await toBlobURL(wasmURL, 'application/wasm'),
-						workerURL: await toBlobURL(workerURL, 'text/javascript'),
+						workerURL: await toBlobURL(
+							URL.createObjectURL(
+								new Blob([workerRaw], { type: 'application/javascript' })
+							),
+							'text/javascript'
+						),
 					})
 					set({ status: 'done' })
 				} catch (e) {
