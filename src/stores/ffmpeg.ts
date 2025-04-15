@@ -2,7 +2,6 @@ import { persistent } from './utils'
 import { FFmpeg } from '@ffmpeg/ffmpeg'
 import { toBlobURL } from '@ffmpeg/util'
 import coreURL from '@/code/core.js?url'
-import wasmURL from '@/code/core.wasm?url'
 
 const initialState = {
 	status: 'loading',
@@ -45,8 +44,11 @@ export const useFFmpegStore = persistent<{
 				// domain can be used directly.
 				try {
 					await ffmpeg.load({
-						coreURL: await toBlobURL(coreURL, 'text/javascript'),
-						wasmURL: await toBlobURL(wasmURL, 'application/wasm'),
+						coreURL: await toBlobURL('/core.js', 'text/javascript'),
+						wasmURL: await toBlobURL(
+							`${baseURL}/ffmpeg-core.wasm`,
+							'application/wasm'
+						),
 						workerURL: await toBlobURL(`/worker.js`, 'text/javascript'),
 					})
 					set({ status: 'done' })
