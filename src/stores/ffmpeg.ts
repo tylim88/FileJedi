@@ -5,6 +5,7 @@ import { wasmURL, wasm_mtURL } from '@/config'
 import workerRaw from '@/worker.js?raw'
 import core_mtURL from '@ffmpeg/core-mt?url'
 import coreURL from '@ffmpeg/core?url'
+import isWindow from 'is-windows'
 
 const initialState = {
 	status: 'loading',
@@ -26,7 +27,7 @@ export const useFFmpegStore = persistent<{
 	},
 	(set, get) => {
 		//@ts-expect-error 123
-		const isChromium = !!window.chrome
+		const isSingleThread = !!window.chrome && isWindow() // only chromium on window need single thread
 		return {
 			...initialState,
 			reset: () => {
@@ -48,11 +49,11 @@ export const useFFmpegStore = persistent<{
 				try {
 					await ffmpeg.load({
 						coreURL: await toBlobURL(
-							isChromium ? coreURL : core_mtURL,
+							isSingleThread ? coreURL : core_mtURL,
 							'application/javascript'
 						),
 						wasmURL: await toBlobURL(
-							isChromium ? wasmURL : wasm_mtURL,
+							isSingleThread ? wasmURL : wasm_mtURL,
 							'application/wasm'
 						),
 						workerURL: await toBlobURL(
