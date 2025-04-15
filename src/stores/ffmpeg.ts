@@ -48,7 +48,7 @@ export const useFFmpegStore = persistent<{
 							'https://api.filejedi.com/ffmpeg-core.wasm',
 							'application/wasm'
 						),
-						workerURL: await toBlobURL(`/worker.js`, 'text/javascript'),
+						// workerURL: await toBlobURL(`/worker.js`, 'text/javascript'),
 					})
 					set({ status: 'done' })
 				} catch (e) {
