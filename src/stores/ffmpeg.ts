@@ -37,7 +37,6 @@ export const useFFmpegStore = persistent<{
 				set({ status: 'loading' })
 
 				ffmpeg.on('log', ({ message }) => {
-					console.log({ message })
 					set({ message })
 				})
 				// toBlobURL is used to bypass CORS issue, urls with the same
