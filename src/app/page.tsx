@@ -46,6 +46,7 @@ export default function Home() {
 				{buttons.map(({ gradient, href, label, className, Left, Right }) => {
 					return (
 						<Button
+							key={label}
 							href={href}
 							component={Link}
 							gradient={gradient}
