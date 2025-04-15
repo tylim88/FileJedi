@@ -33,7 +33,7 @@ export const useFFmpegStore = persistent<{
 				const { status } = get()
 				if (status === 'done') return
 				set({ status: 'loading' })
-				const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.9/dist/esm'
+				const baseURL = 'https://unpkg.com/@ffmpeg/core-mt@0.12.9/dist/esm'
 
 				ffmpeg.on('log', ({ message }) => {
 					set({ message })
