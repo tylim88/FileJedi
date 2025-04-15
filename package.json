@@ -12,7 +12,7 @@
 		"lint": "eslint . --ext .js,.jsx,.ts,.tsx,.md,.json,.yml --fix",
 		"building-block-scripts": "=============building-blocks===================",
 		"use_regular_html": "cp -fr index.regular.html index.html",
-		"build": "vite build --config vite.sw.config.ts && vite build",
+		"build": "vite build --config vite.sw.config.ts && vite build && rm dist/core.wasm",
 		"dev-scripts": "======================dev(local client side)===========================",
 		"use_dev_config": "cp -fr src/config.dev.ts src/config.ts",
 		"dev": "npm run use_dev_config && vite --host",
