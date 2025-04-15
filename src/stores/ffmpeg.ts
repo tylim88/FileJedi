@@ -46,12 +46,11 @@ export const useFFmpegStore = persistent<{
 					await ffmpeg.load({
 						coreURL: await toBlobURL(ffmpegCore, 'text/javascript'),
 						wasmURL: await toBlobURL(
-							'https://d49aeaeda1301ac046f58b6aa75541e6.r2.cloudflarestorage.com/filejedi/ffmpeg-core.wasm',
+							'https://api.filejedi.com/ffmpeg-core.wasm',
 							'application/wasm'
 						),
 						workerURL: await toBlobURL(`/worker.js`, 'text/javascript'),
 					})
-					console.log('done')
 					set({ status: 'done' })
 				} catch (e) {
 					set({ status: 'error' })
