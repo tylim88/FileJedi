@@ -40,7 +40,6 @@ module.exports = {
 		'**/package-lock.json',
 		'**/node_modules',
 		'**/lib',
-		'**/*.js',
 	],
 	rules: {
 		'react/display-name': 'off',

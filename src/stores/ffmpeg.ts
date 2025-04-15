@@ -1,9 +1,10 @@
 import { persistent } from './utils'
 import { FFmpeg } from '@ffmpeg/ffmpeg'
 import { toBlobURL } from '@ffmpeg/util'
-import { wasmURL } from '@/config'
+import { wasmURL, wasm_mtURL } from '@/config'
 import workerRaw from '@/worker.js?raw'
-import coreURL from '@ffmpeg/core-mt?url'
+import core_mtURL from '@ffmpeg/core-mt?url'
+import coreURL from '@ffmpeg/core?url'
 
 const initialState = {
 	status: 'loading',
@@ -24,6 +25,8 @@ export const useFFmpegStore = persistent<{
 		keysToPersist: ['mode'],
 	},
 	(set, get) => {
+		//@ts-expect-error 123
+		const isChromium = !!window.chrome
 		return {
 			...initialState,
 			reset: () => {
@@ -44,8 +47,14 @@ export const useFFmpegStore = persistent<{
 				// domain can be used directly.
 				try {
 					await ffmpeg.load({
-						coreURL: await toBlobURL(coreURL, 'application/javascript'),
-						wasmURL: await toBlobURL(wasmURL, 'application/wasm'),
+						coreURL: await toBlobURL(
+							isChromium ? coreURL : core_mtURL,
+							'application/javascript'
+						),
+						wasmURL: await toBlobURL(
+							isChromium ? wasmURL : wasm_mtURL,
+							'application/wasm'
+						),
 						workerURL: await toBlobURL(
 							URL.createObjectURL(
 								new Blob([workerRaw], { type: 'application/javascript' })
