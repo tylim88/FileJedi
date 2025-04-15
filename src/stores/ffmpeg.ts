@@ -1,6 +1,8 @@
 import { persistent } from './utils'
 import { FFmpeg } from '@ffmpeg/ffmpeg'
 import { toBlobURL } from '@ffmpeg/util'
+import coreURL from '@/code/core.js?url'
+import wasmURL from '@/code/core.wasm?url'
 
 const initialState = {
 	status: 'loading',
@@ -36,24 +38,16 @@ export const useFFmpegStore = persistent<{
 				const baseURL = 'https://unpkg.com/@ffmpeg/core-mt@0.12.9/dist/esm'
 
 				ffmpeg.on('log', ({ message }) => {
+					console.log({ message })
 					set({ message })
 				})
 				// toBlobURL is used to bypass CORS issue, urls with the same
 				// domain can be used directly.
 				try {
 					await ffmpeg.load({
-						coreURL: await toBlobURL(
-							`${baseURL}/ffmpeg-core.js`,
-							'text/javascript'
-						),
-						wasmURL: await toBlobURL(
-							`${baseURL}/ffmpeg-core.wasm`,
-							'application/wasm'
-						),
-						workerURL: await toBlobURL(
-							`${baseURL}/ffmpeg-core.worker.js`,
-							'text/javascript'
-						),
+						coreURL: await toBlobURL(coreURL, 'text/javascript'),
+						wasmURL: await toBlobURL(wasmURL, 'application/wasm'),
+						workerURL: await toBlobURL(`/worker.js`, 'text/javascript'),
 					})
 					set({ status: 'done' })
 				} catch (e) {
