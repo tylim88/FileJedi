@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono, Rubik } from 'next/font/google'
+import { Rubik } from 'next/font/google'
 import {
 	MantineProvider,
 	ColorSchemeScript,
@@ -46,7 +46,7 @@ export default function RootLayout({
 			</head>
 			<body className="antialiased">
 				<MantineProvider theme={theme}>
-					<Container>
+					<Container style={{ backgroundImage: `url("/dot-grid.webp") ` }}>
 						<Header />
 						{children}
 					</Container>
