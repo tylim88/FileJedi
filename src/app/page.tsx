@@ -1,7 +1,7 @@
 'use client'
 import { Pacifico } from 'next/font/google'
 import { Title, Stack, Flex, Button, Text } from '@mantine/core'
-import { Link } from '@/components'
+import { Link, Hero } from '@/components'
 import {
 	MdOutlineKeyboardDoubleArrowLeft,
 	MdOutlineKeyboardDoubleArrowRight,
@@ -34,36 +34,8 @@ const buttons = [
 
 export default function Home() {
 	return (
-		<Stack w="100%" align="center" gap={0}>
-			<Title ta="center" order={1} fz={60} fw={800} mt="10vh">
-				Absolutely{' '}
-				<span className={`${pacifico.className} block text-shadow-lg`}>
-					Free
-				</span>{' '}
-				Media Converters
-			</Title>
-			<Flex gap="lg" my="xl">
-				{buttons.map(({ gradient, href, label, className, Left, Right }) => {
-					return (
-						<Button
-							key={label}
-							href={href}
-							component={Link}
-							gradient={gradient}
-							size="xl"
-							w="10rem"
-							radius="lg"
-							className={className}
-							variant="gradient"
-							rightSection={Right && <Right size={28} />}
-							leftSection={Left && <Left size={28} />}
-						>
-							{label}
-						</Button>
-					)
-				})}
-			</Flex>
-			<Text className={pacifico.className}>Try Them Now!</Text>
-		</Stack>
+		<>
+			<Hero />
+		</>
 	)
 }
