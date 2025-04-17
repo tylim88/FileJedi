@@ -6,7 +6,6 @@ export default function Home() {
 		<>
 			<Hero />
 			<br />
-			<br />
 			<Points />
 		</>
 	)
