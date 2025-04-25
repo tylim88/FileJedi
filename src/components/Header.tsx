@@ -44,6 +44,7 @@ export const Header = () => {
 			<NavLink
 				component={Link}
 				href="/"
+				w="fit-content"
 				title="go to homepage"
 				aria-label="go to homepage"
 				styles={{

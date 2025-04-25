@@ -35,7 +35,7 @@ const buttons = [
 export const Hero = () => {
 	return (
 		<Stack w="100%" align="center" gap={0} component="section">
-			<Title ta="center" order={1} fz={60} fw={800} mt="10vh">
+			<Title ta="center" order={1} fz={60} fw={800} mt="xl">
 				Absolutely{' '}
 				<span className={`${pacifico.className} block text-shadow-lg`}>
 					Free
