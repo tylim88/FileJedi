@@ -42,6 +42,7 @@ export const Header = () => {
 	return (
 		<Flex w="100%" justify="space-between" pt="md" align="center">
 			<NavLink
+				pl={0}
 				component={Link}
 				href="/"
 				w="fit-content"
