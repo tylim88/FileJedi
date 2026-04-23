@@ -1,3 +1,5 @@
+It is not working now, I will fix it when I have time
+
 # FileJedi
 
 An absolutely free, client-side-only video converter web app with no artificial restrictions.
